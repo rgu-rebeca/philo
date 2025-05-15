@@ -6,7 +6,7 @@
 /*   By: rgu <rgu@student.42madrid.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 22:55:48 by rgu               #+#    #+#             */
-/*   Updated: 2025/05/14 18:03:43 by rgu              ###   ########.fr       */
+/*   Updated: 2025/05/15 11:49:43 by rgu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	main_aux(t_rules *rules, pthread_t supervise_thread)
 	while (i < rules->count_philo)
 	{
 		pthread_mutex_destroy(&rules->forks[i]);
-		pthread_mutex_destroy(rules->philos[i].meal_mutex);
-		free(rules->philos[i].meal_mutex);
+		pthread_mutex_destroy(&rules->philos[i].meal_mutex);
 		i++;
 	}
 	pthread_mutex_destroy(&rules->print);

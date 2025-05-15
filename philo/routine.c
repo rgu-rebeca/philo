@@ -6,7 +6,7 @@
 /*   By: rgu <rgu@student.42madrid.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 22:56:03 by rgu               #+#    #+#             */
-/*   Updated: 2025/05/15 00:08:01 by rgu              ###   ########.fr       */
+/*   Updated: 2025/05/15 12:37:16 by rgu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_log(t_philo *philo, char *msg)
 	else if (ft_strcmp(msg, "is thinking") == 0)
 		color = BLUE;
 	else if (ft_strcmp(msg, "has taken a fork") == 0)
-		color = CYAN;
+		color = MAGENTA;
 	else if (ft_strcmp(msg, "died") == 0)
 		color = RED;
 	else
@@ -64,10 +64,10 @@ int	routine_aux_1(t_philo *philo)
 
 void	routine_aux_2(t_philo *philo)
 {
-	pthread_mutex_lock(philo->meal_mutex);
+	pthread_mutex_lock(&philo->meal_mutex);
 	philo->meals_eaten++;
 	philo->last_meal = get_time();
-	pthread_mutex_unlock(philo->meal_mutex);
+	pthread_mutex_unlock(&philo->meal_mutex);
 	print_log(philo, "is eating");
 	precise_sleep(philo->rules->time_to_eat);
 	if (philo->id % 2 == 0)

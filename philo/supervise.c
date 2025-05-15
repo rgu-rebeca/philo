@@ -6,7 +6,7 @@
 /*   By: rgu <rgu@student.42madrid.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 22:56:11 by rgu               #+#    #+#             */
-/*   Updated: 2025/05/14 19:06:39 by rgu              ###   ########.fr       */
+/*   Updated: 2025/05/15 11:49:10 by rgu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	supervise_aux(t_rules *rules)
 	while (i < rules->count_philo)
 	{
 		philo = &rules->philos[i];
-		pthread_mutex_lock(philo->meal_mutex);
+		pthread_mutex_lock(&philo->meal_mutex);
 		time_since_last_meal = get_time() - philo->last_meal;
 		if (time_since_last_meal > rules->time_to_die)
 		{
@@ -30,10 +30,10 @@ static int	supervise_aux(t_rules *rules)
 			pthread_mutex_lock(&rules->death);
 			rules->someone_died = 1;
 			pthread_mutex_unlock(&rules->death);
-			pthread_mutex_unlock(philo->meal_mutex);
+			pthread_mutex_unlock(&philo->meal_mutex);
 			return (1);
 		}
-		pthread_mutex_unlock(philo->meal_mutex);
+		pthread_mutex_unlock(&philo->meal_mutex);
 		i++;
 	}
 	return (0);

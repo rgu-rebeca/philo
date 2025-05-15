@@ -6,7 +6,7 @@
 /*   By: rgu <rgu@student.42madrid.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 22:56:31 by rgu               #+#    #+#             */
-/*   Updated: 2025/05/15 01:09:47 by rgu              ###   ########.fr       */
+/*   Updated: 2025/05/15 12:17:32 by rgu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	wait_for_philos(t_rules *rules)
 			if (WEXITSTATUS(status) == 1)
 			{
 				i = 0;
-				while (i < rules->count_philo) 
+				while (i < rules->count_philo)
 					kill(rules->philos[i++].pid, SIGKILL);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: rgu <rgu@student.42madrid.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 22:55:55 by rgu               #+#    #+#             */
-/*   Updated: 2025/05/11 22:57:49 by rgu              ###   ########.fr       */
+/*   Updated: 2025/05/15 12:35:31 by rgu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_philo
 	t_rules			*rules;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*meal_mutex;
+	pthread_mutex_t	meal_mutex;
 }	t_philo;
 
 int		init_all(t_rules *rules, int argc, char **argv);

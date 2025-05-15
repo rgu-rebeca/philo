@@ -6,7 +6,7 @@
 /*   By: rgu <rgu@student.42madrid.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 22:55:40 by rgu               #+#    #+#             */
-/*   Updated: 2025/05/14 18:19:34 by rgu              ###   ########.fr       */
+/*   Updated: 2025/05/15 11:48:42 by rgu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	init_philo(t_rules *rules)
 		philo->rules = rules;
 		philo->left_fork = &rules->forks[i];
 		philo->right_fork = &rules->forks[(i + 1) % rules->count_philo];
-		philo->meal_mutex = malloc(sizeof(pthread_mutex_t));
-		if (!philo->meal_mutex)
-			return (1);
-		pthread_mutex_init(philo->meal_mutex, NULL);
+		pthread_mutex_init(&philo->meal_mutex, NULL);
 		i++;
 	}
 	return (0);

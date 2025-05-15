@@ -6,7 +6,7 @@
 /*   By: rgu <rgu@student.42madrid.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 22:56:17 by rgu               #+#    #+#             */
-/*   Updated: 2025/05/14 18:53:18 by rgu              ###   ########.fr       */
+/*   Updated: 2025/05/15 11:50:13 by rgu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	all_philos_eaten_enough(t_rules *rules)
 	result = 1;
 	while (i < rules->count_philo)
 	{
-		pthread_mutex_lock(rules->philos[i].meal_mutex);
+		pthread_mutex_lock(&rules->philos[i].meal_mutex);
 		meals = rules->philos[i].meals_eaten;
-		pthread_mutex_unlock(rules->philos[i].meal_mutex);
+		pthread_mutex_unlock(&rules->philos[i].meal_mutex);
 		if (rules->nb_meals > meals)
 		{
 			result = 0;
